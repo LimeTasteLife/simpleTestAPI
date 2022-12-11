@@ -29,25 +29,29 @@ const gameResult = [
   },
 ];
 
-router.get('/', (req, res) => {
+router.get('/', (req, res, next) => {
   let winner;
-  if (req.query.gameId) {
-    const gameId = req.query.gameId;
-    for (i = 0; i < 2; i++) {
-      if (gameId == gameResult[i].gameId) {
-        winner = gameResult[i].winner;
-        break;
+  try {
+    if (req.query.gameId) {
+      const gameId = req.query.gameId;
+      for (i = 0; i < 2; i++) {
+        if (gameId == gameResult[i].gameId) {
+          winner = gameResult[i].winner;
+          break;
+        }
+      }
+      if (winner) {
+        res.status(200).json({
+          winner: winner,
+        });
+      } else {
+        res.status(200).json({
+          winner: '0',
+        });
       }
     }
-    if (winner) {
-      res.status(200).json({
-        winner: winner,
-      });
-    } else {
-      res.status(200).json({
-        winner: '0',
-      });
-    }
+  } catch (err) {
+    next(err);
   }
 });
 

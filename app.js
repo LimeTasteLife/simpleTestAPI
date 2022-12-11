@@ -7,7 +7,7 @@ const gameAuthRouter = require('./routes/gameAuth');
 const gameResultRouter = require('./routes/gameResult');
 
 const app = express();
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 80);
 app.set('view engine', 'html');
 app.use(morgan('dev'));
 app.use(express.json());
