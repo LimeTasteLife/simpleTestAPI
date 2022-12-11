@@ -1,0 +1,26 @@
+[
+  {
+    "gameId": "1234",
+    "team1": {
+      "nickname": ["user1", "user2", "user3", "user4", "user5"]
+    },
+    "team2": {
+      "nickname": ["user6", "user7", "user8", "user9", "user10"]
+    },
+    "winner": "1"
+  },
+  {
+    "gameId": "2345",
+    "team1": [
+      {
+        "nickname": ["user11", "user12", "user13", "user14", "user15"]
+      }
+    ],
+    "team2": [
+      {
+        "nickname": ["user16", "user17", "user18", "user19", "user20"]
+      }
+    ],
+    "winner": "2"
+  }
+]
