@@ -42,11 +42,11 @@ router.get('/', (req, res, next) => {
       }
       if (winner) {
         res.status(200).json({
-          winner: parseInt(winner),
+          winner: winner,
         });
       } else {
         res.status(200).json({
-          winner: 0,
+          winner: '0',
         });
       }
     }
