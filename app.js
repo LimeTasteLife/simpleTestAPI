@@ -12,9 +12,11 @@ app.set('view engine', 'html');
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
 const sessionOption = {
   resave: false,
   saveUninitialized: false,
+  secret: 1234,
   cookie: {
     httpOnly: true,
     secure: false,
@@ -34,7 +36,8 @@ app.use((req, res, next) => {
 app.use((err, req, res, next) => {
   res.locals.message = err.message;
   res.locals.error = process.env.NODE_ENV !== 'production' ? err : {};
-  res.status(err.status || 500).JSON({
+  res.status(err.status || 500);
+  res.json({
     msg: res.locals.message,
     error: res.locals.error,
   });

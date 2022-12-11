@@ -66,18 +66,24 @@ const userList = [
 ];
 
 router.get('/', (req, res) => {
+  let auth;
+  console.log(req.query);
   if (req.query.nickname) {
     const nickName = req.query.nickname;
-    for (i = 1; i <= 20; i++) {
+    for (i = 0; i < 20; i++) {
       if (nickName == userList[i].nickname) {
-        res.status(200).json({
-          auth: 'true',
-        });
-      } else {
-        res.status(200).json({
-          auth: 'false',
-        });
+        auth = 'true';
+        break;
       }
+    }
+    if (auth == 'true') {
+      res.status(200).json({
+        auth: auth,
+      });
+    } else {
+      res.status(200).json({
+        auth: 'false',
+      });
     }
   }
 });

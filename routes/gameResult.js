@@ -30,18 +30,23 @@ const gameResult = [
 ];
 
 router.get('/', (req, res) => {
+  let winner;
   if (req.query.gameId) {
     const gameId = req.query.gameId;
-    for (i = 1; i <= 2; i++) {
+    for (i = 0; i < 2; i++) {
       if (gameId == gameResult[i].gameId) {
-        res.status(200).json({
-          winner: gameResult[i].winner,
-        });
-      } else {
-        res.status(200).json({
-          msg: 'no game',
-        });
+        winner = gameResult[i].winner;
+        break;
       }
+    }
+    if (winner) {
+      res.status(200).json({
+        winner: winner,
+      });
+    } else {
+      res.status(200).json({
+        winner: '0',
+      });
     }
   }
 });
